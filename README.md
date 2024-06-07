@@ -5,11 +5,14 @@
 [![R-CMD-check](https://github.com/Merck/psm3mkv/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/Merck/psm3mkv/actions/workflows/R-CMD-check.yaml)
 [![Codecov test
 coverage](https://codecov.io/gh/Merck/psm3mkv/branch/main/graph/badge.svg)](https://app.codecov.io/gh/Merck/psm3mkv?branch=main)
+[![CRAN status](https://www.r-pkg.org/badges/version/psm3mkv)](https://cran.r-project.org/package=psm3mkv)
+[![CRAN Downloads](https://cranlogs.r-pkg.org/badges/psm3mkv)](https://cran.r-project.org/package=psm3mkv)
 <!-- badges: end -->
 
 The goal of psm3mkv is to evaluate the efficiency and fit of certain
 three state model structures to data typical from an oncology clinical
-trial. The package evaluates the following structures:
+trial, as described in an accompanying article (Muston 2024). The package
+evaluates the following structures:
 
 - Partitioned Survival Model/analysis (PSM),
 
@@ -19,7 +22,8 @@ trial. The package evaluates the following structures:
 
 The state transition models differ from each other in that the
 transition from progressive disease to death is a function of time from
-baseline in the STM-CF and time from progression in the STM-CR [1, 2].
+baseline in the STM-CF and time from progression in the STM-CR
+(Jackson 2016; Woods et al. 2020).
 
 The package requires a patient-level dataset of time to progression
 (TTP), progression-free survival (PFS) and overall survival (OS).
@@ -28,10 +32,10 @@ Given this, the package enables:
 
 - Fitting a range of models to endpoints relevant each model type:
 
-  - One piece parametric (distributions according to flexsurv.
+  - One piece parametric (distributions according to flexsurv).
 
   - Royston-Parmar splines (1-3 internal knots, hazard/odds/normal
-    scales, again as per flexsurv) [3].
+    scales, again as per flexsurv) (Royston and Parmar 2002).
 
   - Two piece parametric (given a time cutoff).
 
@@ -87,17 +91,11 @@ Please ensure R is updated first.
 
 ### Latest stable release
 
-Install the latest stable release from GitHub:
+Install the latest stable release from CRAN:
 
 ``` r
-# install.packages("pak")
-pak::pak("Merck/psm3mkv@*release")
+install.packages("psm3mkv")
 ```
-
-Note that `pak::pak()` does not build the vignettes by default when
-installing a package from GitHub, which is ideal because the vignettes
-can take a long time to generate. You can conveniently view them on the
-package [documentation website](https://merck.github.io/psm3mkv/).
 
 ### Development version
 
@@ -105,53 +103,56 @@ Install the latest development version from GitHub (this may not be as
 stable):
 
 ``` r
+# install.packages("pak")
 pak::pak("Merck/psm3mkv@main")
 ```
+
+Note that `pak::pak()` does not build the vignettes by default when
+installing a package from GitHub, which is ideal because the vignettes
+can take a long time to generate. You can conveniently view them on the
+package [documentation website](https://merck.github.io/psm3mkv/).
 
 ### Additional dependencies
 
 Running the vignettes requires additional dependencies, which are all
-either imported by or suggested by *psm3mkv*. Thus you can ensure they
+either imported by or suggested by psm3mkv. Thus you can ensure they
 are all installed by specifying `dependencies = TRUE`.
 
 ``` r
 pak::pak("Merck/psm3mkv@*release", dependencies = TRUE)
 ```
 
-## Licensing
+## Citation
 
-Copyright (c) 2024 Merck & Co., Inc., Rahway, NJ, USA and its
-affiliates. All rights reserved.
+If you use this software, please cite it as below.
 
-This file is part of the psm3mkv program.
+> Muston, D. 2024. "Informing Structural Assumptions for Three State Oncology
+> Cost-Effectiveness Models through Model Efficiency and Fit."
+> _Applied Health Economics and Health Policy_. DOI: 10.1007/s40258-024-00884-2
 
-psm3mkv is free software: you can redistribute it and/or modify it under
-the terms of the GNU General Public License as published by the Free
-Software Foundation, either version 3 of the License, or (at your
-option) any later version.
+A BibTeX entry for LaTeX users is
 
-This program is distributed in the hope that it will be useful, but
-WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
-Public License for more details.
-
-You should have received a copy of the GNU General Public License along
-with this program. If not, see <http://www.gnu.org/licenses/>.
-
-psm3mkv uses third-party R packages which may be distributed under
-different licenses.
+```bibtex
+@article{muston2024informing,
+  author  = {Dominic Muston},
+  title   = {Informing structural assumptions for three state oncology cost-effectiveness models through model efficiency and fit},
+  journal = {Applied Health Economics and Health Policy},
+  year    = {2024},
+  doi     = {10.1007/s40258-024-00884-2}
+}
+```
 
 ## References
 
-1. Jackson, Christopher. 2016. "flexsurv: A Platform for Parametric
-   Survival Modeling in R." _Journal of Statistical Software_ 70 (8): 1--33.
+Jackson, Christopher. 2016. "flexsurv: A Platform for Parametric
+Survival Modeling in R." _Journal of Statistical Software_ 70 (8): 1--33.
 
-2. Woods, Beth S, Eleftherios Sideris, Stephen Palmer, Nick Latimer,
-   and Marta Soares. 2020. "Partitioned Survival and State Transition Models
-   for Healthcare Decision Making in Oncology: Where Are We Now?"
-   _Value in Health_ 23 (12): 1613--1621.
+Woods, Beth S, Eleftherios Sideris, Stephen Palmer, Nick Latimer,
+and Marta Soares. 2020. "Partitioned Survival and State Transition Models
+for Healthcare Decision Making in Oncology: Where Are We Now?"
+_Value in Health_ 23 (12): 1613--1621.
 
-3. Royston, Patrick, and Mahesh KB Parmar. 2002. "Flexible Parametric
-   Proportional-Hazards and Proportional-Odds Models for Censored Survival
-   Data, with Application to Prognostic Modelling and Estimation of
-   Treatment Effects." _Statistics in Medicine_ 21 (15): 2175--2197.
+Royston, Patrick, and Mahesh KB Parmar. 2002. "Flexible Parametric
+Proportional-Hazards and Proportional-Odds Models for Censored Survival
+Data, with Application to Prognostic Modelling and Estimation of
+Treatment Effects." _Statistics in Medicine_ 21 (15): 2175--2197.

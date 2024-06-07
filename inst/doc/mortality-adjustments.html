@@ -49,7 +49,7 @@ overflow: visible;
 </style>
 <style type="text/css" data-origin="pandoc">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -148,6 +148,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; }
 div.csl-bib-body { }
 div.csl-entry {
 clear: both;
+margin-bottom: 0em;
 }
 .hanging div.csl-entry {
 margin-left:2em;
@@ -660,12 +661,12 @@ still without any lifetable constraints.</p>
 <span id="cb7-10"><a href="#cb7-10" tabindex="-1"></a><span class="co">#&gt; # A tibble: 3 × 7</span></span>
 <span id="cb7-11"><a href="#cb7-11" tabindex="-1"></a><span class="co">#&gt;          pf        pd        os model  method lxadj psmmeth</span></span>
 <span id="cb7-12"><a href="#cb7-12" tabindex="-1"></a><span class="co">#&gt;   &lt;num:.1!&gt; &lt;num:.1!&gt; &lt;num:.1!&gt; &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;  </span></span>
-<span id="cb7-13"><a href="#cb7-13" tabindex="-1"></a><span class="co">#&gt; 1     274.2     118.5     392.7 PSM    disc   no    simple </span></span>
-<span id="cb7-14"><a href="#cb7-14" tabindex="-1"></a><span class="co">#&gt; 2     270.2     120.1     390.3 STM-CF disc   no    simple </span></span>
-<span id="cb7-15"><a href="#cb7-15" tabindex="-1"></a><span class="co">#&gt; 3     270.2     123.8     394.0 STM-CR disc   no    simple</span></span></code></pre></div>
+<span id="cb7-13"><a href="#cb7-13" tabindex="-1"></a><span class="co">#&gt; 1     274.3     118.3     392.6 PSM    disc   no    simple </span></span>
+<span id="cb7-14"><a href="#cb7-14" tabindex="-1"></a><span class="co">#&gt; 2     270.1     119.7     389.8 STM-CF disc   no    simple </span></span>
+<span id="cb7-15"><a href="#cb7-15" tabindex="-1"></a><span class="co">#&gt; 3     270.1     123.7     393.8 STM-CR disc   no    simple</span></span></code></pre></div>
 <p>Discretization has proven fairly accurate. The STM-CR estimate of
-mean time alive has reduced by just -0.1 weeks for example, from 393.9
-to 394 weeks.</p>
+mean time alive has reduced by just 0.1 weeks for example, from 393.9 to
+393.8 weeks.</p>
 <p>Finally, we use a discretization approximation and apply the
 lifetable constraints.</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="co"># Run the calculations</span></span>
@@ -680,20 +681,20 @@ lifetable constraints.</p>
 <span id="cb8-10"><a href="#cb8-10" tabindex="-1"></a><span class="co">#&gt; # A tibble: 3 × 7</span></span>
 <span id="cb8-11"><a href="#cb8-11" tabindex="-1"></a><span class="co">#&gt;          pf        pd        os model  method lxadj psmmeth</span></span>
 <span id="cb8-12"><a href="#cb8-12" tabindex="-1"></a><span class="co">#&gt;   &lt;num:.1!&gt; &lt;num:.1!&gt; &lt;num:.1!&gt; &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;  </span></span>
-<span id="cb8-13"><a href="#cb8-13" tabindex="-1"></a><span class="co">#&gt; 1     274.2      91.9     366.1 PSM    disc   yes   simple </span></span>
-<span id="cb8-14"><a href="#cb8-14" tabindex="-1"></a><span class="co">#&gt; 2     230.4     108.0     338.4 STM-CF disc   yes   simple </span></span>
-<span id="cb8-15"><a href="#cb8-15" tabindex="-1"></a><span class="co">#&gt; 3     230.4     111.2     341.6 STM-CR disc   yes   simple</span></span>
+<span id="cb8-13"><a href="#cb8-13" tabindex="-1"></a><span class="co">#&gt; 1     235.4     105.5     340.9 PSM    disc   yes   simple </span></span>
+<span id="cb8-14"><a href="#cb8-14" tabindex="-1"></a><span class="co">#&gt; 2     230.1     107.6     337.7 STM-CF disc   yes   simple </span></span>
+<span id="cb8-15"><a href="#cb8-15" tabindex="-1"></a><span class="co">#&gt; 3     230.1     111.6     341.6 STM-CR disc   yes   simple</span></span>
 <span id="cb8-16"><a href="#cb8-16" tabindex="-1"></a></span>
 <span id="cb8-17"><a href="#cb8-17" tabindex="-1"></a><span class="co"># Proportion of time alive spent in PF</span></span>
 <span id="cb8-18"><a href="#cb8-18" tabindex="-1"></a>proppf3 <span class="ot">&lt;-</span> res3<span class="sc">$</span>pf <span class="sc">/</span> res3<span class="sc">$</span>os</span></code></pre></div>
-<p>There is now a large difference between the STM-CR compared to the
+<p>There is now some difference between the STM-CR compared to the
 STM-CF and PSM structures. All structures estimate fairly similar RMD
-estimates of being alive (range: 338.4 to 366.1 weeks). The estimate of
-mean time alive in the STM-CR structure has reduced by 52.4 weeks from
+estimates of being alive (range: 337.7 to 341.6 weeks). The estimate of
+mean time alive in the STM-CR structure has reduced by 52.3 weeks from
 393.9 to 341.6 weeks.</p>
 <p>The proportion of that time in the PF rather than PD state varies
-considerably (PSM: 74.9%, STM-CF: 68.1%, STM-CR: 67.5%). Given that the
-hazard of mortality would typically be lower before rather than after
+somewhat (PSM: 69%, STM-CF: 68.1%, STM-CR: 67.3%). Given that the hazard
+of mortality would typically be lower before rather than after
 progression, the pre-progression mortality is likely to be more affected
 by any mortality constraint that post-progression mortality. The STM-CR
 model of post-progression survival depends on time from progression and
@@ -714,16 +715,16 @@ structure.</p>
 <span id="cb9-10"><a href="#cb9-10" tabindex="-1"></a><span class="co">#&gt; # A tibble: 3 × 7</span></span>
 <span id="cb9-11"><a href="#cb9-11" tabindex="-1"></a><span class="co">#&gt;          pf        pd        os model  method lxadj psmmeth</span></span>
 <span id="cb9-12"><a href="#cb9-12" tabindex="-1"></a><span class="co">#&gt;   &lt;num:.1!&gt; &lt;num:.1!&gt; &lt;num:.1!&gt; &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;  </span></span>
-<span id="cb9-13"><a href="#cb9-13" tabindex="-1"></a><span class="co">#&gt; 1     272.9      93.2     366.1 PSM    disc   yes   complex</span></span>
-<span id="cb9-14"><a href="#cb9-14" tabindex="-1"></a><span class="co">#&gt; 2     230.4     108.0     338.4 STM-CF disc   yes   complex</span></span>
-<span id="cb9-15"><a href="#cb9-15" tabindex="-1"></a><span class="co">#&gt; 3     230.4     111.2     341.6 STM-CR disc   yes   complex</span></span>
+<span id="cb9-13"><a href="#cb9-13" tabindex="-1"></a><span class="co">#&gt; 1     231.0     103.7     334.7 PSM    disc   yes   complex</span></span>
+<span id="cb9-14"><a href="#cb9-14" tabindex="-1"></a><span class="co">#&gt; 2     230.1     107.6     337.7 STM-CF disc   yes   complex</span></span>
+<span id="cb9-15"><a href="#cb9-15" tabindex="-1"></a><span class="co">#&gt; 3     230.1     111.6     341.6 STM-CR disc   yes   complex</span></span>
 <span id="cb9-16"><a href="#cb9-16" tabindex="-1"></a></span>
 <span id="cb9-17"><a href="#cb9-17" tabindex="-1"></a><span class="co"># Proportion of time alive spent in PF</span></span>
 <span id="cb9-18"><a href="#cb9-18" tabindex="-1"></a>proppf4 <span class="ot">&lt;-</span> res4<span class="sc">$</span>pf <span class="sc">/</span> res4<span class="sc">$</span>os</span></code></pre></div>
 <p>All structures estimate fairly similar RMD estimates of being alive
-(range: 338.4 to 366.1 weeks). The proportion of that time in the PF
-rather than PD state varied again considerably by model structure (PSM:
-74.5%, STM-CF: 68.1%, STM-CR: 67.5%).</p>
+(range: 334.7 to 341.6 weeks). The proportion of that time in the PF
+rather than PD state varied a little by model structure (PSM: 69%,
+STM-CF: 68.1%, STM-CR: 67.3%).</p>
 </div>
 <div id="comparing-the-results" class="section level3">
 <h3>Comparing the results</h3>
@@ -756,17 +757,17 @@ time alive is given in the table below.</p>
 </tr>
 <tr class="even">
 <td align="left">No lifetable constraint, discretized calculation</td>
-<td align="left">270.2</td>
-<td align="left">0.1</td>
-<td align="left">390.3</td>
-<td align="left">0.4</td>
+<td align="left">270.1</td>
+<td align="left">-0.1</td>
+<td align="left">389.8</td>
+<td align="left">-0.1</td>
 </tr>
 <tr class="odd">
 <td align="left">With lifetable constraint, discretized calculation</td>
-<td align="left">230.4</td>
-<td align="left">-39.8</td>
-<td align="left">338.4</td>
-<td align="left">-51.5</td>
+<td align="left">230.1</td>
+<td align="left">-40.1</td>
+<td align="left">337.7</td>
+<td align="left">-52.2</td>
 </tr>
 </tbody>
 </table>
@@ -802,17 +803,17 @@ time alive is given in the table below.</p>
 </tr>
 <tr class="even">
 <td align="left">No lifetable constraint, discretized calculation</td>
-<td align="left">270.2</td>
-<td align="left">0.1</td>
-<td align="left">394</td>
-<td align="left">0.1</td>
+<td align="left">270.1</td>
+<td align="left">-0.1</td>
+<td align="left">393.8</td>
+<td align="left">-0.1</td>
 </tr>
 <tr class="odd">
 <td align="left">With lifetable constraint, discretized calculation</td>
-<td align="left">230.4</td>
-<td align="left">-39.8</td>
+<td align="left">230.1</td>
+<td align="left">-40.1</td>
 <td align="left">341.6</td>
-<td align="left">-52.4</td>
+<td align="left">-52.3</td>
 </tr>
 </tbody>
 </table>
@@ -849,60 +850,57 @@ PSM</td>
 <tr class="even">
 <td align="left">No lifetable constraint, discretized calculation,
 simple PSM</td>
-<td align="left">274.2</td>
-<td align="left">-0.2</td>
-<td align="left">392.7</td>
-<td align="left">0</td>
+<td align="left">274.3</td>
+<td align="left">-0.1</td>
+<td align="left">392.6</td>
+<td align="left">-0.1</td>
 </tr>
 <tr class="odd">
 <td align="left">With lifetable constraint, discretized calculation,
 simple PSM</td>
-<td align="left">274.2</td>
-<td align="left">-0.2</td>
-<td align="left">366.1</td>
-<td align="left">-26.6</td>
+<td align="left">235.4</td>
+<td align="left">-39</td>
+<td align="left">340.9</td>
+<td align="left">-51.8</td>
 </tr>
 <tr class="even">
 <td align="left">With lifetable constraint, discretized calculation,
 complex PSM</td>
-<td align="left">272.9</td>
-<td align="left">-1.5</td>
-<td align="left">366.1</td>
-<td align="left">-26.6</td>
+<td align="left">231</td>
+<td align="left">-43.4</td>
+<td align="left">334.7</td>
+<td align="left">-58.1</td>
 </tr>
 </tbody>
 </table>
 <p>The change in the RMDs for the ‘complex’ PSM structure compared to
-the ‘simple’ PSM structure were -1.3, 1.3 and 0 weeks respectively for
-time in PF state, PD state and time alive.</p>
+the ‘simple’ PSM structure were -4.3, -1.9 and -6.2 weeks respectively
+for time in PF state, PD state and time alive.</p>
 </div>
-<div id="for-further-investigation" class="section level3">
-<h3>For further investigation</h3>
-<ul>
-<li>The effect of the lifetable constraint on the STMs was much greater
-- especially to time in the PF state - in the STMs rather than the
-PSM.</li>
-<li>The package also allows application of discounting through the
-<code>discrate</code> optional call to <code>calc_allrnds()</code>.</li>
-</ul>
+<div id="possible-extensions" class="section level3">
+<h3>Possible extensions</h3>
+<p>Not applied here, the package also allows application of discounting
+through the <code>discrate</code> optional call to
+<code>calc_allrnds()</code>. This work could also be easily extended
+through calculating RMDs or Life Years that are Quality Adjusted
+(QALYs).</p>
 </div>
 </div>
 <div id="references" class="section level2 unnumbered">
 <h2 class="unnumbered">References</h2>
-<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
 <div id="ref-jackson2016flexsurv" class="csl-entry">
 Jackson, Christopher. 2016. <span>“<span class="nocase">flexsurv</span>:
 A Platform for Parametric Survival Modeling in <span>R</span>.”</span>
 <em>Journal of Statistical Software</em> 70 (8): 1–33.
 </div>
 <div id="ref-pack_tibble" class="csl-entry">
-Müller, Kirill, and Hadley Wickham. 2023. <em>Tibble: Simple Data
-Frames</em>. <a href="https://CRAN.R-project.org/package=tibble">https://CRAN.R-project.org/package=tibble</a>.
+Müller, Kirill, and Hadley Wickham. 2023. <em><span class="nocase">tibble</span>: Simple Data Frames</em>. <a href="https://CRAN.R-project.org/package=tibble">https://CRAN.R-project.org/package=tibble</a>.
 </div>
 <div id="ref-muston2024informing" class="csl-entry">
 Muston, Dominic. 2024. <span>“Informing Structural Assumptions for Three
 State Oncology Cost-Effectiveness Models Through Model Efficiency and
-Fit.”</span> <em>Applied Health Economics and Health Policy</em>.
+Fit.”</span> <em>Applied Health Economics and Health Policy</em>. <a href="https://doi.org/10.1007/s40258-024-00884-2">https://doi.org/10.1007/s40258-024-00884-2</a>.
 </div>
 <div id="ref-naimark2013half" class="csl-entry">
 Naimark, David MJ, Nader N Kabboul, and Murray D Krahn. 2013. <span>“The
@@ -917,7 +915,8 @@ National Institute for Health; Care Excellence. <a href="https://www.nice.org.uk
 </div>
 <div id="ref-pack_HMDHFDplus" class="csl-entry">
 Riffe, Tim. 2015. <span>“Reading Human Fertility Database and Human
-Mortality Database Data into r.”</span> TR-2015-004. MPIDR. <a href="https://doi.org/10.4054/MPIDR-TR-2015-004">https://doi.org/10.4054/MPIDR-TR-2015-004</a>.
+Mortality Database Data into <span>R</span>.”</span> TR-2015-004. MPIDR.
+<a href="https://doi.org/10.4054/MPIDR-TR-2015-004">https://doi.org/10.4054/MPIDR-TR-2015-004</a>.
 </div>
 <div id="ref-sweeting2023survival" class="csl-entry">
 Sweeting, Michael J, Mark J Rutherford, Dan Jackson, Sangyu Lee,
@@ -928,7 +927,8 @@ Decision Making</em> 43 (6): 737–48.
 </div>
 <div id="ref-pack_dplyr" class="csl-entry">
 Wickham, Hadley, Romain François, Lionel Henry, Kirill Müller, and Davis
-Vaughan. 2023. <em>Dplyr: A Grammar of Data Manipulation</em>. <a href="https://CRAN.R-project.org/package=dplyr">https://CRAN.R-project.org/package=dplyr</a>.
+Vaughan. 2023. <em><span class="nocase">dplyr</span>: A Grammar of Data
+Manipulation</em>. <a href="https://CRAN.R-project.org/package=dplyr">https://CRAN.R-project.org/package=dplyr</a>.
 </div>
 </div>
 </div>
