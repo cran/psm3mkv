@@ -63,7 +63,7 @@ vonelookup <- function(oneindexval, indexvec, valvec, method="geom") {
 #' - `ceiling`: Ceiling (maximum) value, where interpolation is required between measured values
 #' - `arith`: Arithmetic mean, where interpolation is required between measured values
 #' - `geom`: Geometric mean, where interpolation is required between measured values
-#' @seealso [HMDHFDplus::readHMDweb] can be used to obtain lifetables from the Human Mortality Database
+#' @seealso `HMDHFDplus::readHMDweb()` can be used to obtain lifetables from the Human Mortality Database
 #' @export
 #' @examples
 #' # Suppose we have survival probabilities at times 0 to 20
@@ -191,7 +191,7 @@ constrain_survprob <- function(survprob1, survprob2=NA, lifetable=NA, timevec=0:
   ltexists <- !is.na(lifetable)[1]
   # Survprob1 and survprob2 must have equal length (when survprob2 is defined)
   if(s2exists) {
-    stopifnot("Survival probability vectors must have equal length" = length(survprob1)==length(survprob1))
+    stopifnot("Survival probability vectors must have equal length" = length(survprob1)==length(survprob2))
     }
   # Vector of lifetables (or ones, if lifetable not specified)
   tN <- length(timevec)

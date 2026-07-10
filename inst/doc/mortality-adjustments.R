@@ -10,26 +10,26 @@ library("psm3mkv")
 library("tibble")
 
 ## ----ltable1, eval=FALSE------------------------------------------------------
-#  # HMD HFD package
-#  library("HMDHFDplus")
-#  
-#  # Assumed population age at baseline (time=0)
-#  baseage <- 51.0
-#  
-#  # Mortality data - England & Wales, Female, 2019
-#  mort <- readHMDweb(
-#    CNTRY = "GBRTENW",
-#    item = "fltper_1x1",
-#    username = "",
-#    password = ""
-#  ) |>
-#    filter(Year == 2019) |>
-#    select(Age, lx, dx) |>
-#    mutate(Timey = ceiling(Age - baseage)) |>
-#    filter(Timey >= 0)
-#  
-#  # The table needs to end with lx=0
-#  mort <- add_row(mort, Age = 111, lx = 0, Timey = 60)
+# # HMD HFD package
+# library("HMDHFDplus")
+# 
+# # Assumed population age at baseline (time=0)
+# baseage <- 51.0
+# 
+# # Mortality data - England & Wales, Female, 2019
+# mort <- readHMDweb(
+#   CNTRY = "GBRTENW",
+#   item = "fltper_1x1",
+#   username = "",
+#   password = ""
+# ) |>
+#   filter(Year == 2019) |>
+#   select(Age, lx, dx) |>
+#   mutate(Timey = ceiling(Age - baseage)) |>
+#   filter(Timey >= 0)
+# 
+# # The table needs to end with lx=0
+# mort <- add_row(mort, Age = 111, lx = 0, Timey = 60)
 
 ## ----ltable2------------------------------------------------------------------
 mort <- tibble(

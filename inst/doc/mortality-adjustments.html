@@ -48,8 +48,9 @@ overflow: visible;
 }
 </style>
 <style type="text/css" data-origin="pandoc">
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -148,7 +149,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; }
 div.csl-bib-body { }
 div.csl-entry {
 clear: both;
-margin-bottom: 0em;
 }
 .hanging div.csl-entry {
 margin-left:2em;
@@ -486,8 +486,8 @@ time into timesteps rather than follow the integral formulas described
 above for continuous time. As long as timesteps are reasonably short,
 restricted mean duration results should remain reasonably accurate.
 Derided as a “kludge”, half-cycle corrections are nevertheless
-recommended <span class="citation">(Naimark, Kabboul, and Krahn
-2013)</span>. The package provides discretized calculations.</p>
+recommended <span class="citation">(Naimark et al. 2013)</span>. The
+package provides discretized calculations.</p>
 </div>
 <div id="application-to-partitioned-survival-models-psm" class="section level2">
 <h2>Application to Partitioned Survival Models (PSM)</h2>
@@ -888,7 +888,7 @@ through calculating RMDs or Life Years that are Quality Adjusted
 </div>
 <div id="references" class="section level2 unnumbered">
 <h2 class="unnumbered">References</h2>
-<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
+<div id="refs" class="references csl-bib-body hanging-indent">
 <div id="ref-jackson2016flexsurv" class="csl-entry">
 Jackson, Christopher. 2016. <span>“<span class="nocase">flexsurv</span>:
 A Platform for Parametric Survival Modeling in <span>R</span>.”</span>
@@ -900,7 +900,8 @@ Müller, Kirill, and Hadley Wickham. 2023. <em><span class="nocase">tibble</span
 <div id="ref-muston2024informing" class="csl-entry">
 Muston, Dominic. 2024. <span>“Informing Structural Assumptions for Three
 State Oncology Cost-Effectiveness Models Through Model Efficiency and
-Fit.”</span> <em>Applied Health Economics and Health Policy</em>. <a href="https://doi.org/10.1007/s40258-024-00884-2">https://doi.org/10.1007/s40258-024-00884-2</a>.
+Fit.”</span> <em>Applied Health Economics and Health Policy</em>, ahead
+of print. <a href="https://doi.org/10.1007/s40258-024-00884-2">https://doi.org/10.1007/s40258-024-00884-2</a>.
 </div>
 <div id="ref-naimark2013half" class="csl-entry">
 Naimark, David MJ, Nader N Kabboul, and Murray D Krahn. 2013. <span>“The
@@ -909,18 +910,16 @@ Half-Cycle Correction Revisited: Redemption of a Kludge.”</span>
 </div>
 <div id="ref-nice2022" class="csl-entry">
 National Institute for Health and Care Excellence. 2022.
-<span>“Avalglucosidase Alfa for Treating <span>Pompe</span>
-Disease.”</span> Technology appraisal guidance TA821. London, UK:
-National Institute for Health; Care Excellence. <a href="https://www.nice.org.uk/guidance/ta821/documents/committee-papers">https://www.nice.org.uk/guidance/ta821/documents/committee-papers</a>.
+<em>Avalglucosidase Alfa for Treating <span>Pompe</span> Disease</em>.
+Technology Appraisal Guidance No. TA821. National Institute for Health;
+Care Excellence. <a href="https://www.nice.org.uk/guidance/ta821/documents/committee-papers">https://www.nice.org.uk/guidance/ta821/documents/committee-papers</a>.
 </div>
 <div id="ref-pack_HMDHFDplus" class="csl-entry">
-Riffe, Tim. 2015. <span>“Reading Human Fertility Database and Human
-Mortality Database Data into <span>R</span>.”</span> TR-2015-004. MPIDR.
-<a href="https://doi.org/10.4054/MPIDR-TR-2015-004">https://doi.org/10.4054/MPIDR-TR-2015-004</a>.
+Riffe, Tim. 2015. <em>Reading Human Fertility Database and Human
+Mortality Database Data into <span>R</span></em>. TR-2015-004. MPIDR. <a href="https://doi.org/10.4054/MPIDR-TR-2015-004">https://doi.org/10.4054/MPIDR-TR-2015-004</a>.
 </div>
 <div id="ref-sweeting2023survival" class="csl-entry">
-Sweeting, Michael J, Mark J Rutherford, Dan Jackson, Sangyu Lee,
-Nicholas R Latimer, Robert Hettle, and Paul C Lambert. 2023.
+Sweeting, Michael J, Mark J Rutherford, Dan Jackson, et al. 2023.
 <span>“Survival Extrapolation Incorporating General Population Mortality
 Using Excess Hazard and Cure Models: A Tutorial.”</span> <em>Medical
 Decision Making</em> 43 (6): 737–48.
